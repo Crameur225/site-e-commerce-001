@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
+
 const initialState = {
-    items: [],
+    items: localStorage.getItem('carts') ? JSON.parse(localStorage.getItem('carts')) : [],
     statusTab: false
 }
 const cartSlice = createSlice(
@@ -16,6 +17,7 @@ const cartSlice = createSlice(
             }else{
                 state.items.push({productId, quantity})
             }
+            localStorage.setItem("carts", JSON.stringify(state.items))
            },
            changeQuantity(state, action){
             const {productId, quantity} = action.payload
@@ -26,7 +28,9 @@ const cartSlice = createSlice(
                 //supprimer
                 state.items = state.items.filter((item) => item.productId !== productId)
             }
+            localStorage.setItem('carts', JSON.stringify(state.items))
            },
+           
            toggleStatusTab(state){
             if(state.statusTab === false){
                 state.statusTab = true;
