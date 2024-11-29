@@ -38,7 +38,7 @@ const Details = () => {
   return (
     <div>
      <h2 className='text-3xl text-center'>Produit Detail</h2>
-     <div className='grid grid-cols-2 gap-5 mt-5'>
+     <div className='grid lg:grid-cols-2 sm:grid-cols-1 gap-5 mt-5'>
         <div>
            <img src={details.image} alt="" className='w-full'/>
         </div>
